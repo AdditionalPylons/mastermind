@@ -102,8 +102,13 @@ class Game():
                     quit()
 
             while self.correct_word == None:
-                response = input('Which word is the secret password? ')
-                check_quit(response)
+                try:
+                    response = input('Which word is the secret password? ')
+                    check_quit(response)
+
+                except EOFError:
+                    system('clear')
+                    quit()
 
                 self.correct_word = response if response in self.word_list else None
                 if self.correct_word == None:
